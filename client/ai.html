@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>RealWorth Analyzer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="icon" href="./Assets/Gold  Black Home Icon Real Estate Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="ai.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_circle" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">  
+      <script src="ai.js"></script>
+     <!-- Preloader CSS -->
+     <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #22333B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loader {
+            position: relative;
+            width: 75px;
+            height: 100px;
+        }
+
+        .loader__bar {
+            position: absolute;
+            bottom: 0;
+            width: 10px;
+            height: 50%;
+            background: #fff;
+            transform-origin: center bottom;
+            box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* Position and animation for bars */
+        .loader__bar:nth-child(1) { left: 0px; animation: barUp1 2s infinite ease-in-out; }
+        .loader__bar:nth-child(2) { left: 15px; animation: barUp2 2s infinite ease-in-out; }
+        .loader__bar:nth-child(3) { left: 30px; animation: barUp3 2s infinite ease-in-out; }
+        .loader__bar:nth-child(4) { left: 45px; animation: barUp4 2s infinite ease-in-out; }
+        .loader__bar:nth-child(5) { left: 60px; animation: barUp5 2s infinite ease-in-out; }
+
+        /* Ball */
+        .loader__ball {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 50%;
+            animation: ball 2s infinite ease-in-out;
+        }
+
+        /* Ball Animation */
+        @keyframes ball {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -30px); }
+            50% { transform: translate(60px, 0); }
+            75% { transform: translate(30px, -30px); }
+        }
+
+        /* Bar Animations */
+        @keyframes barUp1 { 0%, 100% { transform: scaleY(0.2); } 50% { transform: scaleY(1); } }
+        @keyframes barUp2 { 0%, 100% { transform: scaleY(0.4); } 50% { transform: scaleY(0.8); } }
+        @keyframes barUp3 { 0%, 100% { transform: scaleY(0.6); } }
+        @keyframes barUp4 { 0%, 100% { transform: scaleY(0.8); } 50% { transform: scaleY(0.4); } }
+        @keyframes barUp5 { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.2); } }
+
+        /* Hide the content until the page is loaded */
+        body.loading {
+            overflow: hidden;
+        }
+    </style>
+     
+</head>
+<body>
+    <body class="loading">
+        <!-- Preloader Element  -->
+         <div id="preloader">
+          <div class="loader">
+              <div class="loader__bar"></div>
+              <div class="loader__bar"></div>
+              <div class="loader__bar"></div>
+              <div class="loader__bar"></div>
+              <div class="loader__bar"></div>
+              <div class="loader__ball"></div>
+          </div>
+      </div>
+  
+     <!-- JavaScript for preloader --> 
+      <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              // Hide the preloader after the page has loaded
+              setTimeout(function() {
+                  const preloader = document.getElementById('preloader');
+                  preloader.style.opacity = '0';
+                  
+                  // Remove the preloader from the DOM after the fade-out animation
+                  setTimeout(function() {
+                      preloader.style.display = 'none';
+                      document.body.classList.remove('loading');
+                  }, 500); // 500ms matches the transition duration in CSS
+              }, 1000); // Show loader for 2 seconds before hiding
+          });
+      </script>
+      <div class="fixbar">
+        <div class="logo">
+            <a href="/Users/shauryasharma/Desktop/College/College Project/RealValue/House Price Prediction/client/ai.html">
+            <img src="Assets/webicon.png" alt="logo">
+         </a>
+        </div>
+    </div>
+<div class="main">
+
+    <video autoplay  muted loop plays-inline class="back-video">
+        <source src="./Assets/bgvideo.mov">
+    </video>
+
+    <div class="emptspace" style="height: 92px;"></div>
+    <div class="heading"  style="background-color:rgba(0,0,0,0.7); padding: 10px;">
+        <h1>RealWorth Analyzer</h1>
+    </div>
+    
+<div class="continer"  style="background-color:rgba(0,0,0,0.7);">
+   
+    <div class="form-container" >
+    <form class="form">
+        <h2>Area (Square Feet)</h2>
+        <input class="area"  type="text" id="uiSqft" class="floatLabel" name="Squareft" value="1000">
+        <h2>BHK</h2>
+        <div class="switch-field">
+            <input type="radio" id="radio-bhk-1" name="uiBHK" value="1"/>
+            <label for="radio-bhk-1">1</label>
+            <input type="radio" id="radio-bhk-2" name="uiBHK" value="2" checked/>
+            <label for="radio-bhk-2">2</label>
+            <input type="radio" id="radio-bhk-3" name="uiBHK" value="3"/>
+            <label for="radio-bhk-3">3</label>
+            <input type="radio" id="radio-bhk-4" name="uiBHK" value="4"/>
+            <label for="radio-bhk-4">4</label>
+            <input type="radio" id="radio-bhk-5" name="uiBHK" value="5"/>
+            <label for="radio-bhk-5">5</label>
+        </div>
+        <h2>Bath</h2>
+        <div class="switch-field">
+            <input type="radio" id="radio-bath-1" name="uiBathrooms" value="1"/>
+            <label for="radio-bath-1">1</label>
+            <input type="radio" id="radio-bath-2" name="uiBathrooms" value="2" checked/>
+            <label for="radio-bath-2">2</label>
+            <input type="radio" id="radio-bath-3" name="uiBathrooms" value="3"/>
+            <label for="radio-bath-3">3</label>
+            <input type="radio" id="radio-bath-4" name="uiBathrooms" value="4"/>
+            <label for="radio-bath-4">4</label>
+            <input type="radio" id="radio-bath-5" name="uiBathrooms" value="5"/>
+            <label for="radio-bath-5">5</label>
+        </div>
+            <h2>Location</h2>
+        <div>
+      <select class="location" name="" id="uiLocations">
+        <option value="" disabled="disabled" selected="selected">Choose a Location</option>
+            <option>Electronic City</option>
+            <option>Rajaji Nagar</option>
+      </select>
+    </div>
+        <button class="submit" onclick="onClickedEstimatePrice()" type="button">Estimate Price</button>
+    </form>
+</div>
+        <div id="uiEstimatedPrice" class="result"  >	
+            <p style="font-size: 20px;">The Predicted Price is :</p>
+            <h2></h2>
+         </div>
+</div>
+<!-- <div id="uiEstimatedPrice"  class="result" style="width: 25%;">	<h2></h2> </div> -->
+</div>
+
+<div class="footer">
+    <div class="contactus">
+        <h4 style="color:  rgb(241, 218, 159);;">Contact us</h4>
+        <p><span>Phone: </span>+91 8888899999</p>
+        <p><span>email: </span>contactus@realvalue.com</p>
+    </div>
+    <div class="followus">
+        <h4 style="color:  rgb(241, 218, 159);;">Follow us</h4>
+        <div class="social">
+            <a href=""><i class="fab fa-facebook"></i></a>
+            <a href=""><i class="fab fa-twitter"></i></a>
+            <a href=""><i class="fab fa-instagram"></i></a>
+            <a href=""><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+    <div class="aboutus">
+        <h4 style="color:  rgb(241, 218, 159);">About us</h4>
+        <h4 style="color:  rgb(241, 218, 159);">Welcome to Real Value</h4>
+        <p><strong>Real Value</strong> is your trusted real estate agency, dedicated to finding the perfect property for you. <br> Whether it's a dream home, investment, or commercial space, we provide expert guidance and seamless solutions. <br>At <strong>Real Value</strong>, we turn properties into possibilities.</p>
+    
+    
+    </div>
+  
+</body>
+</html>
